@@ -1,1 +1,23 @@
+name: Test, Build, and Deploy | Modul 01 - Lab2.2 Seniot Project
 
+on:
+  push:
+    branches: [main]
+    
+jobs:
+  test-build:
+    runs-on: ubuntu-latest
+    
+    strategy:
+      matrix:
+        node-version: [16.x]
+        
+    steps:
+      - uses: actions/checkout@v2
+      - name: Testing Build pre-Deploy
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrik.node-version }}
+          cache: "npm"
+      - run: npm i
+      - run: npm run build
